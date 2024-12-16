@@ -1,0 +1,150 @@
+John Doe 1001 ,Y 3
+Mathematics MTH101 3 A
+Physics PHY102 4 B
+History HIS103 2 A
+
+Jane Smith 1002 N 4
+Mathematics MTH201 3 C
+Biology BIO202 3 B
+Chemistry CHM203 4 A
+ComputerSci CSC204 3 C
+
+Emily Brown 1003 Y 3
+Physics PHY301 4 B
+Mathematics MTH302 3 A
+History HIS303 3 B
+
+Michael Green 1004 N 2
+Chemistry CHM401 3 A
+ComputerSci CSC402 4 B
+
+Sarah White 1005 Y 4
+Mathematics MTH501 3 A
+Physics PHY502 3 A
+Biology BIO503 4 B
+History HIS504 3 B
+
+Daniel Black 1006 N 3
+Physics PHY601 4 C
+Mathematics MTH602 3 C
+Chemistry CHM603 4 B
+
+Sophia Blue 1007 Y 2
+ComputerSci CSC701 3 A
+History HIS702 4 B
+
+James Yellow 1008 Y 3
+Mathematics MTH801 3 B
+Physics PHY802 4 A
+Biology BIO803 3 B
+
+Linda Gray 1009 N 4
+History HIS901 3 C
+Physics PHY902 4 B
+Chemistry CHM903 3 A
+ComputerSci CSC904 3 B
+
+William Purple 1010 Y 2
+Mathematics MTH1001 3 A
+Biology BIO1002 4 B
+
+Anna Red 1011 Y 3
+Chemistry CHM1101 4 B
+Physics PHY1102 3 A
+Mathematics MTH1103 3 C
+
+Robert Orange 1012 N 2
+History HIS1201 4 C
+ComputerSci CSC1202 3 B
+
+Jessica Violet 1013 Y 4
+Physics PHY1301 3 A
+Mathematics MTH1302 4 B
+Biology BIO1303 3 B
+Chemistry CHM1304 3 A
+
+Oliver Pink 1014 Y 3
+ComputerSci CSC1401 3 A
+History HIS1402 4 B
+Physics PHY1403 3 C
+
+Amelia Brown 1015 N 3
+Mathematics MTH1501 3 B
+Physics PHY1502 3 A
+Biology BIO1503 4 B
+
+Ethan Black 1016 Y 4
+History HIS1601 4 A
+Physics PHY1602 3 A
+Mathematics MTH1603 3 A
+Chemistry CHM1604 4 A
+
+Grace Green 1017 N 2
+ComputerSci CSC1701 3 B
+Mathematics MTH1702 4 C
+
+Lucas Gray 1018 Y 3
+Physics PHY1801 3 A
+Mathematics MTH1802 3 B
+History HIS1803 3 B
+
+Sophia Blue 1019 N 4
+Biology BIO1901 3 C
+Chemistry CHM1902 4 B
+Physics PHY1903 4 A
+Mathematics MTH1904 3 A
+
+Liam White 1020 Y 3
+History HIS2001 4 B
+Physics PHY2002 3 A
+Mathematics MTH2003 3 B
+
+Charlotte Green 1021 Y 3
+Mathematics MTH2101 3 A
+Biology BIO2102 4 B
+Physics PHY2103 3 C
+
+Mason Gray 1022 N 2
+Chemistry CHM2201 4 A
+Physics PHY2202 3 B
+
+Emily Blue 1023 Y 4
+Mathematics MTH2301 3 A
+Physics PHY2302 4 A
+History HIS2303 3 B
+Biology BIO2304 4 B
+
+Henry Red 1024 N 3
+ComputerSci CSC2401 3 B
+Mathematics MTH2402 4 C
+Physics PHY2403 3 A
+
+Isabella Orange 1025 Y 2
+Mathematics MTH2501 3 A
+Physics PHY2502 4 B
+
+Jack Brown 1026 Y 4
+Biology BIO2601 3 A
+History HIS2602 4 A
+Physics PHY2603 4 B
+Chemistry CHM2604 3 C
+
+Ella Purple 1027 N 3
+Mathematics MTH2701 3 B
+ComputerSci CSC2702 4 A
+Physics PHY2703 4 C
+
+Jacob White 1028 Y 2
+History HIS2801 3 A
+Biology BIO2802 4 B
+
+Mia Green 1029 N 3
+Physics PHY2901 4 C
+Mathematics MTH2902 3 A
+ComputerSci CSC2903 3 B
+
+Noah Blue 1030 Y 4
+Mathematics MTH3001 3 A
+Biology BIO3002 4 B
+Chemistry CHM3003 3 A
+History HIS3004 3 A
