@@ -10,9 +10,8 @@ using namespace std;
 
 void StudentType::readFromTxt(StudentType students[], int &studentCount, const string &fileName)
 {
-    ifstream inFile;
-    inFile.open(fileName);
-    if (!inFile)
+    ifstream file(fileName);
+    if (!file)
     {
         cout << "File not found" << endl;
         return;
@@ -25,7 +24,7 @@ void StudentType::readFromTxt(StudentType students[], int &studentCount, const s
     char tempIsPaid; //? 'y' veya 'n' değerini tutacak
     char grade;
 
-    while (inFile >> fName >> lName >> sId >> tempIsPaid >> numberOfCourses)
+    while (file >> fName >> lName >> sId >> tempIsPaid >> numberOfCourses)
     {
         bool isPaid;
 
@@ -42,19 +41,19 @@ void StudentType::readFromTxt(StudentType students[], int &studentCount, const s
 
         students[studentCount].setStudentInfo(fName, lName, sId, isPaid, numberOfCourses);
 
-        for (int i = 0; i < numberOfCourses; ++i)
+        for (int i = 0; i < numberOfCourses; i++)
         {
-            inFile >> cName >> cCode >> credits >> grade;
+            file >> cName >> cCode >> credits >> grade;
 
             CourseType newCourse(cName, cCode, credits, grade);
             students[studentCount].addNewCourse(i, newCourse);
         }
 
         studentCount++;
-        inFile.ignore(); //! Alt satıra geç
+        file.ignore(); //! Alt satıra geç
     }
 
-    inFile.close();
+    file.close();
 }
 
 void StudentType::setStudentInfo(string fName, string lName, int sId, bool isPaid, int noOfCourses)
@@ -77,7 +76,7 @@ void StudentType::addNewCourse(int index, const CourseType &course)
 int StudentType::getHoursEnrolled() //! Toplam kaç saat kredi aldığı
 {
     int totalHours = 0;
-    for (int i = 0; i < numberOfCourses; ++i)
+    for (int i = 0; i < numberOfCourses; i++)
     {
         totalHours += courseEnrolled[i].getCourseCredits();
     }
@@ -87,7 +86,7 @@ int StudentType::getHoursEnrolled() //! Toplam kaç saat kredi aldığı
 int StudentType::billingAmount() //! Toplam ödenen harç parası (Ders Başı 345 TL)
 {
     int totalAmount = 0;
-    for (int i = 0; i < numberOfCourses; ++i)
+    for (int i = 0; i < numberOfCourses; i++)
     {
         totalAmount += courseEnrolled[i].getCourseCredits() * 345;
     }
@@ -98,54 +97,67 @@ bool StudentType::getIsTuitionPaid() //! Harç ödendi mi
     return isTuitionPaid;
 }
 
-int StudentType::getGpa() //! Not ortalaması
+float StudentType::getGpa() //! Not ortalaması
 {
-    int totalCredits = 0;
-    int totalPoints = 0;
-    for (int i = 0; i < numberOfCourses; ++i)
+    float totalCredits = 0;
+    float totalPoints = 0;
+    for (int i = 0; i < numberOfCourses; i++)
     {
         totalCredits += courseEnrolled[i].getCourseCredits();
         totalPoints += courseEnrolled[i].getCourseCredits() * courseEnrolled[i].getCourseGrade();
     }
+
     return totalPoints / totalCredits;
 }
 
-void StudentType::print() //! Tüm öğrencileri yazdır
+void StudentType::print(int arg) //! terminale yazdırma
 {
-    cout << left; //? Soldan hizalama
-    cout << "First Name:       " << setw(20) << firstName << endl;
-    cout << "Last Name:        " << setw(20) << lastName << endl;
-    cout << "Student ID:       " << setw(20) << studentId << endl;
-    cout << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Yes" : "No") << endl;
-    cout << "Number of Courses:" << setw(20) << numberOfCourses << endl;
-
-    //? Ders bilgilerini yazdırma
-    cout << "Courses Enrolled:" << endl;
-    for (int i = 0; i < numberOfCourses; ++i)
-    {
-        cout << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
-        cout << "  Course Code:    " << setw(20) << courseEnrolled[i].getCourseCode() << endl;
-        cout << "  Course Grade:   " << setw(20) << courseEnrolled[i].getCourseGrade() << endl;
-        cout << "  Course Credits: " << setw(20) << courseEnrolled[i].getCourseCredits() << endl;
-        cout << "---------------------------" << endl;
-    }
-    cout << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
-}
-
-void StudentType::print(int arg) //! Yalnızca istuitionpaid yes olanları yazdır
-{
-    if (isTuitionPaid)
+    if (arg == 0) //! Tüm öğrencileri yazdırma
     {
         cout << left; //? Soldan hizalama
         cout << "First Name:       " << setw(20) << firstName << endl;
         cout << "Last Name:        " << setw(20) << lastName << endl;
         cout << "Student ID:       " << setw(20) << studentId << endl;
-        cout << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Yes" : "No") << endl;
+        cout << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
         cout << "Number of Courses:" << setw(20) << numberOfCourses << endl;
 
         //? Ders bilgilerini yazdırma
+
+        if (getIsTuitionPaid())
+        {
+            cout << "GPA:              " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
+            cout << "Courses Enrolled:" << endl;
+
+            for (int i = 0; i < numberOfCourses; i++)
+            {
+                cout << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
+                cout << "  Course Code:    " << setw(20) << courseEnrolled[i].getCourseCode() << endl;
+                cout << "  Course Grade:   " << setw(20) << courseEnrolled[i].getCourseGrade() << endl;
+                cout << "  Course Credits: " << setw(20) << courseEnrolled[i].getCourseCredits() << endl;
+                cout << "---------------------------" << endl;
+            }
+            cout << "-----------------------------------------------------------------------------------" << endl;
+        }
+        else
+        {
+            cout << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+            cout << "-----------------------------------------------------------------------------------" << endl;
+        }
+        cout << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
+    }
+    if (arg == 1 && isTuitionPaid) //? Harç ödemiş öğrencileri yazdırma
+    {
+        cout << left; //? Soldan hizalama
+        cout << "First Name:       " << setw(20) << firstName << endl;
+        cout << "Last Name:        " << setw(20) << lastName << endl;
+        cout << "Student ID:       " << setw(20) << studentId << endl;
+        cout << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
+        cout << "Number of Courses:" << setw(20) << numberOfCourses << endl;
+        cout << "GPA:              " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
+
+        //? Ders bilgilerini yazdırma
         cout << "Courses Enrolled:" << endl;
-        for (int i = 0; i < numberOfCourses; ++i)
+        for (int i = 0; i < numberOfCourses; i++)
         {
             cout << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
             cout << "  Course Code:    " << setw(20) << courseEnrolled[i].getCourseCode() << endl;
@@ -153,8 +165,101 @@ void StudentType::print(int arg) //! Yalnızca istuitionpaid yes olanları yazd�
             cout << "  Course Credits: " << setw(20) << courseEnrolled[i].getCourseCredits() << endl;
             cout << "---------------------------" << endl;
         }
+        cout << "-----------------------------------------------------------------------------------" << endl;
         cout << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
     }
+
+    if (arg == 2 && !isTuitionPaid) //! Harç ödememiş öğrencileri yazdırma
+    {
+        cout << left; //? Soldan hizalama
+        cout << "First Name:       " << setw(20) << firstName << endl;
+        cout << "Last Name:        " << setw(20) << lastName << endl;
+        cout << "Student ID:       " << setw(20) << studentId << endl;
+        cout << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
+        cout << "Number of Courses:" << setw(20) << numberOfCourses << endl;
+
+        //? Ders bilgilerini yazdırma
+        cout << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+        cout << "-----------------------------------------------------------------------------------" << endl;
+    }
+}
+
+void StudentType::print(int arg, const string &outputFileName)
+{
+    ofstream file(outputFileName, ios::app);
+    //! TÜM ÖĞRENCİLERİ PAKETLER HALİNCE BİR ARRAYİN İNDEXLERİ ŞEKLİNDE ALDIĞIMIZ VE AYNI DOSYAYA YAZMAMIZ İÇİN  İOS::APP KULLANMAMIZ GEREKTİ
+
+    //! EĞER KULLANMASAAYDIK HER BİR STUDENT İNDEXİ İÇİN DOSYAYI TEKRAR TEKRAR OKUYACAĞI İÇİN ::TRUNC GİBİ YAZILAN VERİLERİ ÜSTÜNE YAZMA İŞLEMİ OLACKATI VE EN SON HALİNDE SADECE SON VERİ YAZILACAKTI
+    if (arg == 0)
+    {
+        file << left; //? Soldan hizalama
+        file << "First Name:       " << setw(20) << firstName << endl;
+        file << "Last Name:        " << setw(20) << lastName << endl;
+        file << "Student ID:       " << setw(20) << studentId << endl;
+        file << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
+        file << "Number of Courses:" << setw(20) << numberOfCourses << endl;
+
+        //? Ders bilgilerini yazdırma
+        if (isTuitionPaid)
+        {
+            file << "GPA               " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
+            file << "Courses Enrolled:" << endl;
+
+            for (int i = 0; i < numberOfCourses; i++)
+            {
+                file << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
+                file << "  Course Code:    " << setw(20) << courseEnrolled[i].getCourseCode() << endl;
+                file << "  Course Grade:   " << setw(20) << courseEnrolled[i].getCourseGrade() << endl;
+                file << "  Course Credits: " << setw(20) << courseEnrolled[i].getCourseCredits() << endl;
+                file << "---------------------------" << endl;
+            }
+            file << "-----------------------------------------------------------------------------------" << endl;
+        }
+        if (!isTuitionPaid)
+        {
+            file << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+            file << "-----------------------------------------------------------------------------------" << endl;
+        }
+
+        file << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
+    }
+    if (arg == 1 && isTuitionPaid)
+    {
+        file << left; //? Soldan hizalama
+        file << "First Name:       " << setw(20) << firstName << endl;
+        file << "Last Name:        " << setw(20) << lastName << endl;
+        file << "Student ID:       " << setw(20) << studentId << endl;
+        file << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
+        file << "Number of Courses:" << setw(20) << numberOfCourses << endl;
+
+        file << "Courses Enrolled:" << endl;
+        for (int i = 0; i < numberOfCourses; i++)
+        {
+            file << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
+            file << "  Course Code:    " << setw(20) << courseEnrolled[i].getCourseCode() << endl;
+            file << "  Course Grade:   " << setw(20) << courseEnrolled[i].getCourseGrade() << endl;
+            file << "  Course Credits: " << setw(20) << courseEnrolled[i].getCourseCredits() << endl;
+            file << "---------------------------" << endl;
+        }
+        file << "-----------------------------------------------------------------------------------" << endl;
+
+        file << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
+    }
+    if (arg == 2 && !isTuitionPaid)
+    {
+        file << left; //? Soldan hizalama
+        file << "First Name:       " << setw(20) << firstName << endl;
+        file << "Last Name:        " << setw(20) << lastName << endl;
+        file << "Student ID:       " << setw(20) << studentId << endl;
+        file << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
+        file << "Number of Courses:" << setw(20) << numberOfCourses << endl;
+
+        file << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+        file << "-----------------------------------------------------------------------------------" << endl;
+
+        file << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
+    }
+    file.close();
 }
 
 // TODO => KURS İLE İLGİLİ FONKSİYONLAR
@@ -178,10 +283,10 @@ string CourseType::getCourseCode() const
 
 char CourseType::getCourseGrade() const
 {
-    return courseGrade;
+    return courseCredits;
 }
 
 int CourseType::getCourseCredits() const
 {
-    return courseCredits;
+    return courseGrade;
 }
