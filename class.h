@@ -1,51 +1,91 @@
 #include <iostream>
 using namespace std;
 
-class personType
+const int MAX_COURSES = 10;
+const int MAX_STUDENTS = 30;
+
+class PersonType
 {
 protected:
     string firstName;
     string lastName;
-}
-
-class studentType : protected personType
-{
-private:
-    int sID;
-    int numberOfCourses;
-    char isTuitionPaid = "N";
-    string coursesEnrolled[5];
 
 public:
-    studentType();
-    ~studentType();
-    void readFromTxt(const string &fileName);
+    PersonType(string fName = "", string lName = "")
+    {
+        firstName = fName;
+        lastName = lName;
+    }
+
+    string getFirstName() const
+    {
+        return firstName;
+    }
+    string getLastName() const
+    {
+        return lastName;
+    }
+};
+
+class CourseType
+{
+private:
+    string courseName;
+    string courseCode;
+    char courseGrade;
+    int courseCredits;
+
+public:
+    CourseType(string cName, string cCode, char grade, int credits)
+    {
+        courseName = cName;
+        courseCode = cCode;
+        courseGrade = grade;
+        courseCredits = credits;
+    }
+    CourseType()
+        : courseName(""), courseCode(""), courseGrade('F'), courseCredits(0) {}
+    void setCourseInfo(string cName, string cNo, char grade, int credits);
+    string getCourseName() const;
+    string getCourseCode() const;
+    char getCourseGrade() const;
+    int getCourseCredits() const;
+    void print(int arg);
+    void print(int arg, const string &outputFileName);
+};
+
+class StudentType : protected PersonType
+{
+private:
+    CourseType courseEnrolled[MAX_COURSES];
+    int studentId;
+    int numberOfCourses;
+    bool isTuitionPaid = false;
+
+public:
+    // Parametreli constructor
+    StudentType(string fName, string lName, int sId, bool isPaid, int noOfCourses)
+        : PersonType(fName, lName), studentId(sId), isTuitionPaid(isPaid), numberOfCourses(noOfCourses)
+    {
+        // Bu satırı kaldırdık, çünkü zaten initializer listesi ile başlatılıyor
+        // PersonType(fName, lName);
+        // studentId = sId;
+        // isTuitionPaid = isPaid;
+        // numberOfCourses = noOfCourses;
+    }
+
+    // Varsayılan constructor
+    StudentType()
+        : studentId(0), numberOfCourses(0), isTuitionPaid(false) {}
+
+    void setStudentInfo(string fName, string lName, int sId, bool isPaid, int noOfCourses);
+    void addNewCourse(int index, const CourseType &course);
+    void readFromTxt(StudentType students[], int &studentCount, const string &fileName);
+    int getHoursEnrolled();
+    int billingAmount();
+    bool getIsTuitionPaid();
+    int getGpa();
     void print();
     void print(int arg);
     void print(int arg, const string &outputFileName);
-    void setName();
-    void getName();
-    void setInfo();
-    void getHoursEnrolled();
-    void getGpa();
-    void billingAmount();
-}
-
-class courseType
-{
-public:
-    courseType(string = "", string = "", char = '*', int = 0);
-    ~courseType();
-    void setCourseInfo();
-    void print(/*1 parameter*/);
-    void print(/*2 parameter*/);
-    void getCredits();
-    void getCourseNumber();
-    void getGrade();
-
-private:
-    string courseName;
-    string courseNumber;
-    char courseGrade;
-    int courseCredits;
 };
