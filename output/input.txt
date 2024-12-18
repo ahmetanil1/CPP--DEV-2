@@ -1,4 +1,4 @@
-John Doe 1001 ,Y 3
+John Doe 1001 Y 3
 Mathematics MTH101 3 A
 Physics PHY102 4 B
 History HIS103 2 A
