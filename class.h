@@ -62,10 +62,11 @@ private:
     int numberOfCourses;
     bool isTuitionPaid = false;
 
+
 public:
     // Parametreli constructor
     StudentType(string fName, string lName, int sId, bool isPaid, int noOfCourses)
-        : PersonType(fName, lName), studentId(sId), isTuitionPaid(isPaid), numberOfCourses(noOfCourses)
+        : PersonType(fName, lName), studentId(sId), numberOfCourses(noOfCourses), isTuitionPaid(isPaid)
     {
         // Bu satırı kaldırdık, çünkü zaten initializer listesi ile başlatılıyor
         // PersonType(fName, lName);
@@ -75,8 +76,10 @@ public:
     }
 
     // Varsayılan constructor
-    StudentType()
-        : studentId(0), numberOfCourses(0), isTuitionPaid(false) {}
+    StudentType() //! LAST VE FİRST NAME EKSİK
+        : studentId(0), numberOfCourses(0), isTuitionPaid(false)
+    {
+    }
 
     void setStudentInfo(string fName, string lName, int sId, bool isPaid, int noOfCourses);
     void addNewCourse(int index, const CourseType &course);
@@ -84,8 +87,7 @@ public:
     int getHoursEnrolled();
     int billingAmount();
     bool getIsTuitionPaid();
-    int getGpa();
-    void print();
+    float getGpa();
     void print(int arg);
     void print(int arg, const string &outputFileName);
 };
