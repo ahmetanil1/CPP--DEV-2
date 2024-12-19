@@ -43,11 +43,13 @@ int main()
         cout << "0. Print all students\n";
         cout << "1. Print students who paid for tuition\n";
         cout << "2. Print students who did not pay for tuition\n";
+
         cout << "3. Exit\n";
         cout << "Enter your choice: ";
         int choice;
         cin >> choice;
-
+        cout << "Kayıtlı Öğrenci sayısı: " << studentCount;
+        cout << "       Ders saati başına ödenmesi gereken ücret: " << "300" << endl;
         string fileName = "output.txt";
 
         switch (choice)

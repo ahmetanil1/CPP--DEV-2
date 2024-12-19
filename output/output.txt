@@ -3,7 +3,7 @@ Last Name:        Doe
 Student ID:       1001                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               65.44               
+GPA:              3.56                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH101              
@@ -22,20 +22,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Jane                
-Last Name:        Smith               
-Student ID:       1002                
-Tuition Paid:     N                   
-Number of Courses:4                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Emily               
 Last Name:        Brown               
 Student ID:       1003                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               65.70               
+GPA:              3.30                
 Courses Enrolled:
   Course Name:    Physics             
   Course Code:    PHY301              
@@ -54,20 +46,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Michael             
-Last Name:        Green               
-Student ID:       1004                
-Tuition Paid:     N                   
-Number of Courses:2                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Sarah               
 Last Name:        White               
 Student ID:       1005                
 Tuition Paid:     Y                   
 Number of Courses:4                   
-GPA               65.54               
+GPA:              3.46                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH501              
@@ -91,20 +75,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Daniel              
-Last Name:        Black               
-Student ID:       1006                
-Tuition Paid:     N                   
-Number of Courses:3                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Sophia              
 Last Name:        Blue                
 Student ID:       1007                
 Tuition Paid:     Y                   
 Number of Courses:2                   
-GPA               65.57               
+GPA:              3.43                
 Courses Enrolled:
   Course Name:    ComputerSci         
   Course Code:    CSC701              
@@ -123,7 +99,7 @@ Last Name:        Yellow
 Student ID:       1008                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               65.60               
+GPA:              3.40                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH801              
@@ -142,20 +118,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Linda               
-Last Name:        Gray                
-Student ID:       1009                
-Tuition Paid:     N                   
-Number of Courses:4                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       William             
 Last Name:        Purple              
 Student ID:       1010                
 Tuition Paid:     Y                   
 Number of Courses:2                   
-GPA               65.57               
+GPA:              3.43                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH1001             
@@ -174,7 +142,7 @@ Last Name:        Red
 Student ID:       1011                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               66.00               
+GPA:              3.00                
 Courses Enrolled:
   Course Name:    Chemistry           
   Course Code:    CHM1101             
@@ -193,20 +161,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Robert              
-Last Name:        Orange              
-Student ID:       1012                
-Tuition Paid:     N                   
-Number of Courses:2                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Jessica             
 Last Name:        Violet              
 Student ID:       1013                
 Tuition Paid:     Y                   
 Number of Courses:4                   
-GPA               65.54               
+GPA:              3.46                
 Courses Enrolled:
   Course Name:    Physics             
   Course Code:    PHY1301             
@@ -235,7 +195,7 @@ Last Name:        Pink
 Student ID:       1014                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               66.00               
+GPA:              3.00                
 Courses Enrolled:
   Course Name:    ComputerSci         
   Course Code:    CSC1401             
@@ -254,20 +214,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Amelia              
-Last Name:        Brown               
-Student ID:       1015                
-Tuition Paid:     N                   
-Number of Courses:3                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Ethan               
 Last Name:        Black               
 Student ID:       1016                
 Tuition Paid:     Y                   
 Number of Courses:4                   
-GPA               65.00               
+GPA:              4.00                
 Courses Enrolled:
   Course Name:    History             
   Course Code:    HIS1601             
@@ -291,20 +243,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Grace               
-Last Name:        Green               
-Student ID:       1017                
-Tuition Paid:     N                   
-Number of Courses:2                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Lucas               
 Last Name:        Gray                
 Student ID:       1018                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               65.67               
+GPA:              3.33                
 Courses Enrolled:
   Course Name:    Physics             
   Course Code:    PHY1801             
@@ -323,20 +267,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Sophia              
-Last Name:        Blue                
-Student ID:       1019                
-Tuition Paid:     N                   
-Number of Courses:4                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Liam                
 Last Name:        White               
 Student ID:       1020                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               65.70               
+GPA:              3.30                
 Courses Enrolled:
   Course Name:    History             
   Course Code:    HIS2001             
@@ -360,7 +296,7 @@ Last Name:        Green
 Student ID:       1021                
 Tuition Paid:     Y                   
 Number of Courses:3                   
-GPA               66.00               
+GPA:              3.00                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH2101             
@@ -379,20 +315,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Mason               
-Last Name:        Gray                
-Student ID:       1022                
-Tuition Paid:     N                   
-Number of Courses:2                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Emily               
 Last Name:        Blue                
 Student ID:       1023                
 Tuition Paid:     Y                   
 Number of Courses:4                   
-GPA               65.50               
+GPA:              3.50                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH2301             
@@ -416,20 +344,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Henry               
-Last Name:        Red                 
-Student ID:       1024                
-Tuition Paid:     N                   
-Number of Courses:3                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Isabella            
 Last Name:        Orange              
 Student ID:       1025                
 Tuition Paid:     Y                   
 Number of Courses:2                   
-GPA               65.57               
+GPA:              3.43                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH2501             
@@ -448,7 +368,7 @@ Last Name:        Brown
 Student ID:       1026                
 Tuition Paid:     Y                   
 Number of Courses:4                   
-GPA               65.71               
+GPA:              3.29                
 Courses Enrolled:
   Course Name:    Biology             
   Course Code:    BIO2601             
@@ -472,20 +392,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Ella                
-Last Name:        Purple              
-Student ID:       1027                
-Tuition Paid:     N                   
-Number of Courses:3                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Jacob               
 Last Name:        White               
 Student ID:       1028                
 Tuition Paid:     Y                   
 Number of Courses:2                   
-GPA               65.57               
+GPA:              3.43                
 Courses Enrolled:
   Course Name:    History             
   Course Code:    HIS2801             
@@ -499,20 +411,12 @@ Courses Enrolled:
 ---------------------------
 -----------------------------------------------------------------------------------
 
-First Name:       Mia                 
-Last Name:        Green               
-Student ID:       1029                
-Tuition Paid:     N                   
-Number of Courses:3                   
-Student didn't pay the tuition and that's why we can't show informations of courses
------------------------------------------------------------------------------------
-
 First Name:       Noah                
 Last Name:        Blue                
 Student ID:       1030                
 Tuition Paid:     Y                   
 Number of Courses:4                   
-GPA               65.31               
+GPA:              3.69                
 Courses Enrolled:
   Course Name:    Mathematics         
   Course Code:    MTH3001             
