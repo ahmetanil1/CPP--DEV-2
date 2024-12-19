@@ -50,6 +50,7 @@ void StudentType::readFromTxt(StudentType students[], int &studentCount, const s
         }
 
         studentCount++;
+        //! STUDENT COUNT & İŞARETİ İLE ÇAĞIRILDIĞI İÇİN MAİN İÇERİSİNDE BURADAKİ SON DEĞER ALINIR
         file.ignore(); //! Alt satıra geç
     }
 
@@ -88,7 +89,7 @@ int StudentType::billingAmount() //! Toplam ödenen harç parası (Ders Başı 3
     int totalAmount = 0;
     for (int i = 0; i < numberOfCourses; i++)
     {
-        totalAmount += courseEnrolled[i].getCourseCredits() * 345;
+        totalAmount += courseEnrolled[i].getCourseCredits() * 300;
     }
     return totalAmount;
 }
@@ -97,14 +98,38 @@ bool StudentType::getIsTuitionPaid() //! Harç ödendi mi
     return isTuitionPaid;
 }
 
+float StudentType::getCourseGradeAsNumber(char grade)
+{
+    switch (grade)
+    {
+    case 'A':
+        return 4.0;
+    case 'B':
+        return 3.0;
+    case 'C':
+        return 2.0;
+    case 'D':
+        return 1.0;
+    case 'F':
+        return 0.0;
+    default:
+        return 0.0; // Geçersiz not durumunda.
+    }
+}
+
 float StudentType::getGpa() //! Not ortalaması
 {
     float totalCredits = 0;
     float totalPoints = 0;
+
     for (int i = 0; i < numberOfCourses; i++)
     {
-        totalCredits += courseEnrolled[i].getCourseCredits();
-        totalPoints += courseEnrolled[i].getCourseCredits() * courseEnrolled[i].getCourseGrade();
+        char grade = courseEnrolled[i].getCourseGrade();  // Char olarak alınan not.
+        float gradeValue = getCourseGradeAsNumber(grade); // Sayısal karşılık.
+        float credits = courseEnrolled[i].getCourseCredits();
+
+        totalCredits += credits;
+        totalPoints += gradeValue * credits;
     }
 
     return totalPoints / totalCredits;
@@ -115,6 +140,7 @@ void StudentType::print(int arg) //! terminale yazdırma
     if (arg == 0) //! Tüm öğrencileri yazdırma
     {
         cout << left; //? Soldan hizalama
+
         cout << "First Name:       " << setw(20) << firstName << endl;
         cout << "Last Name:        " << setw(20) << lastName << endl;
         cout << "Student ID:       " << setw(20) << studentId << endl;
@@ -231,8 +257,10 @@ void StudentType::print(int arg, const string &outputFileName)
         file << "Student ID:       " << setw(20) << studentId << endl;
         file << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
         file << "Number of Courses:" << setw(20) << numberOfCourses << endl;
+        file << "GPA:              " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
 
-        file << "Courses Enrolled:" << endl;
+        file
+            << "Courses Enrolled:" << endl;
         for (int i = 0; i < numberOfCourses; i++)
         {
             file << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
