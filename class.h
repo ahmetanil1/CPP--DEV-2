@@ -62,7 +62,6 @@ private:
     int numberOfCourses;
     bool isTuitionPaid = false;
 
-
 public:
     // Parametreli constructor
     StudentType(string fName, string lName, int sId, bool isPaid, int noOfCourses)
@@ -90,4 +89,5 @@ public:
     float getGpa();
     void print(int arg);
     void print(int arg, const string &outputFileName);
+    float getCourseGradeAsNumber(char grade);
 };
