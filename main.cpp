@@ -8,17 +8,15 @@ using namespace std;
 
 void writeToFileAndPrint(StudentType students[], int studentCount, int choice, const string &fileName)
 {
-    // Dosyayı temizle
+    //? Dosyayı temizle ve üstüne yaz
     ofstream clearFile(fileName, ios::trunc);
     clearFile.close();
 
-    // Öğrencileri terminale yazdır
     for (int i = 0; i < studentCount; ++i)
     {
         students[i].print(choice);
     }
 
-    // Öğrencileri dosyaya yazdır
     for (int i = 0; i < studentCount; ++i)
     {
         students[i].print(choice, fileName);
@@ -32,7 +30,6 @@ int main()
     StudentType students[MAX_STUDENTS];
     int studentCount = 0;
 
-    // Öğrencileri dosyadan oku
     for (int i = 0; i < MAX_STUDENTS; i++)
     {
         students[i].readFromTxt(students, studentCount, "input.txt");

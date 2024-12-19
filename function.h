@@ -17,7 +17,7 @@ void StudentType::readFromTxt(StudentType students[], int &studentCount, const s
         return;
     }
 
-    studentCount = 0; // Öğrenci sayısını sıfırla
+    studentCount = 0;
 
     string fName, lName, cName, cCode;
     int sId, credits, numberOfCourses;
@@ -113,7 +113,7 @@ float StudentType::getCourseGradeAsNumber(char grade)
     case 'F':
         return 0.0;
     default:
-        return 0.0; // Geçersiz not durumunda.
+        return 0.0;
     }
 }
 
@@ -124,8 +124,8 @@ float StudentType::getGpa() //! Not ortalaması
 
     for (int i = 0; i < numberOfCourses; i++)
     {
-        char grade = courseEnrolled[i].getCourseGrade();  // Char olarak alınan not.
-        float gradeValue = getCourseGradeAsNumber(grade); // Sayısal karşılık.
+        char grade = courseEnrolled[i].getCourseGrade();
+        float gradeValue = getCourseGradeAsNumber(grade);
         float credits = courseEnrolled[i].getCourseCredits();
 
         totalCredits += credits;
@@ -140,7 +140,14 @@ void StudentType::print(int arg) //! terminale yazdırma
     if (arg == 0) //! Tüm öğrencileri yazdırma
     {
         cout << left; //? Soldan hizalama
-
+        if (getIsTuitionPaid())
+        {
+            cout << "Total Paid :      " << setw(20) << billingAmount() << endl;
+        }
+        else
+        {
+            cout << "Total Paid :      " << setw(20) << 0 << endl;
+        }
         cout << "First Name:       " << setw(20) << firstName << endl;
         cout << "Last Name:        " << setw(20) << lastName << endl;
         cout << "Student ID:       " << setw(20) << studentId << endl;
@@ -152,6 +159,7 @@ void StudentType::print(int arg) //! terminale yazdırma
         if (getIsTuitionPaid())
         {
             cout << "GPA:              " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
+            cout << endl;
             cout << "Courses Enrolled:" << endl;
 
             for (int i = 0; i < numberOfCourses; i++)
@@ -162,18 +170,21 @@ void StudentType::print(int arg) //! terminale yazdırma
                 cout << "  Course Credits: " << setw(20) << courseEnrolled[i].getCourseCredits() << endl;
                 cout << "---------------------------" << endl;
             }
-            cout << "-----------------------------------------------------------------------------------" << endl;
+
+            cout
+                << "-----------------------------------------------------------------------------------" << endl;
         }
         else
         {
-            cout << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+            cout << "Student didn't pay the tuition and that's why we can't show information of courses" << endl;
             cout << "-----------------------------------------------------------------------------------" << endl;
         }
-        cout << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak
+        cout << endl;
     }
     if (arg == 1 && isTuitionPaid) //? Harç ödemiş öğrencileri yazdırma
     {
         cout << left; //? Soldan hizalama
+        cout << "Total Paid :      " << setw(20) << billingAmount() << endl;
         cout << "First Name:       " << setw(20) << firstName << endl;
         cout << "Last Name:        " << setw(20) << lastName << endl;
         cout << "Student ID:       " << setw(20) << studentId << endl;
@@ -182,6 +193,7 @@ void StudentType::print(int arg) //! terminale yazdırma
         cout << "GPA:              " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
 
         //? Ders bilgilerini yazdırma
+        cout << endl;
         cout << "Courses Enrolled:" << endl;
         for (int i = 0; i < numberOfCourses; i++)
         {
@@ -198,14 +210,15 @@ void StudentType::print(int arg) //! terminale yazdırma
     if (arg == 2 && !isTuitionPaid) //! Harç ödememiş öğrencileri yazdırma
     {
         cout << left; //? Soldan hizalama
+        cout << "Total Paid :      " << setw(20) << 0 << endl;
         cout << "First Name:       " << setw(20) << firstName << endl;
         cout << "Last Name:        " << setw(20) << lastName << endl;
         cout << "Student ID:       " << setw(20) << studentId << endl;
         cout << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
         cout << "Number of Courses:" << setw(20) << numberOfCourses << endl;
 
-        //? Ders bilgilerini yazdırma
-        cout << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+        //? Harç yatırmayanın göreceği mesaj
+        cout << "Student didn't pay the tuition and that's why we can't show information of courses" << endl;
         cout << "-----------------------------------------------------------------------------------" << endl;
     }
 }
@@ -219,6 +232,14 @@ void StudentType::print(int arg, const string &outputFileName)
     if (arg == 0)
     {
         file << left; //? Soldan hizalama
+        if (getIsTuitionPaid())
+        {
+            file << "Total Paid :      " << setw(20) << billingAmount() << endl;
+        }
+        else
+        {
+            file << "Total Paid :      " << setw(20) << 0 << endl;
+        }
         file << "First Name:       " << setw(20) << firstName << endl;
         file << "Last Name:        " << setw(20) << lastName << endl;
         file << "Student ID:       " << setw(20) << studentId << endl;
@@ -229,6 +250,7 @@ void StudentType::print(int arg, const string &outputFileName)
         if (isTuitionPaid)
         {
             file << "GPA               " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
+            file << endl;
             file << "Courses Enrolled:" << endl;
 
             for (int i = 0; i < numberOfCourses; i++)
@@ -243,7 +265,7 @@ void StudentType::print(int arg, const string &outputFileName)
         }
         if (!isTuitionPaid)
         {
-            file << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+            file << "Student didn't pay the tuition and that's why we can't show information of courses" << endl;
             file << "-----------------------------------------------------------------------------------" << endl;
         }
 
@@ -252,15 +274,15 @@ void StudentType::print(int arg, const string &outputFileName)
     if (arg == 1 && isTuitionPaid)
     {
         file << left; //? Soldan hizalama
+        file << "Total Paid :      " << setw(20) << billingAmount() << endl;
         file << "First Name:       " << setw(20) << firstName << endl;
         file << "Last Name:        " << setw(20) << lastName << endl;
         file << "Student ID:       " << setw(20) << studentId << endl;
         file << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
         file << "Number of Courses:" << setw(20) << numberOfCourses << endl;
         file << "GPA:              " << setw(20) << fixed << setprecision(2) << getGpa() << endl;
-
-        file
-            << "Courses Enrolled:" << endl;
+        file << endl;
+        file << "Courses Enrolled:" << endl;
         for (int i = 0; i < numberOfCourses; i++)
         {
             file << "  Course Name:    " << setw(20) << courseEnrolled[i].getCourseName() << endl;
@@ -276,13 +298,14 @@ void StudentType::print(int arg, const string &outputFileName)
     if (arg == 2 && !isTuitionPaid)
     {
         file << left; //? Soldan hizalama
+        file << "Total Paid :      " << setw(20) << 0 << endl;
         file << "First Name:       " << setw(20) << firstName << endl;
         file << "Last Name:        " << setw(20) << lastName << endl;
         file << "Student ID:       " << setw(20) << studentId << endl;
         file << "Tuition Paid:     " << setw(20) << (isTuitionPaid ? "Y" : "N") << endl;
         file << "Number of Courses:" << setw(20) << numberOfCourses << endl;
 
-        file << "Student didn't pay the tuition and that's why we can't show informations of courses" << endl;
+        file << "Student didn't pay the tuition and that's why we can't show information of courses" << endl;
         file << "-----------------------------------------------------------------------------------" << endl;
 
         file << endl; //! Diğer öğrenciye geçmeden önce bir satır boşluk bırak

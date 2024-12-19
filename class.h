@@ -16,6 +16,14 @@ public:
         firstName = fName;
         lastName = lName;
     }
+    void setFirstName(string fName)
+    {
+        firstName = fName;
+    }
+    void setLastName(string lName)
+    {
+        lastName = lName;
+    }
 
     string getFirstName() const
     {
@@ -63,21 +71,22 @@ private:
     bool isTuitionPaid = false;
 
 public:
-    // Parametreli constructor
     StudentType(string fName, string lName, int sId, bool isPaid, int noOfCourses)
-        : PersonType(fName, lName), studentId(sId), numberOfCourses(noOfCourses), isTuitionPaid(isPaid)
     {
-        // Bu satırı kaldırdık, çünkü zaten initializer listesi ile başlatılıyor
-        // PersonType(fName, lName);
-        // studentId = sId;
-        // isTuitionPaid = isPaid;
-        // numberOfCourses = noOfCourses;
+        setFirstName(fName);
+        setLastName(lName);
+        studentId = sId;
+        isTuitionPaid = isPaid;
+        numberOfCourses = noOfCourses;
     }
 
-    // Varsayılan constructor
-    StudentType() //! LAST VE FİRST NAME EKSİK
-        : studentId(0), numberOfCourses(0), isTuitionPaid(false)
+    StudentType()
     {
+        setFirstName("");
+        setLastName("");
+        studentId = 0;
+        numberOfCourses = 0;
+        isTuitionPaid = false;
     }
 
     void setStudentInfo(string fName, string lName, int sId, bool isPaid, int noOfCourses);
